@@ -115,13 +115,49 @@ public class GradeCalculatorTest {
     @DisplayName("Score -1 → exception")
     void testScoreNegatif() {
         assertThrows(IllegalArgumentException.class,
-            () -> GradeCalculator.getGrade(-1));
+                () -> GradeCalculator.getGrade(-1));
     }
 
     @Test
     @DisplayName("Score 101 → exception")
     void testScoreAuDessus100() {
         assertThrows(IllegalArgumentException.class,
-            () -> GradeCalculator.getGrade(101));
+                () -> GradeCalculator.getGrade(101));
+    }
+
+    @Test
+    @DisplayName("3-pt | 1 → F")
+    void test3pt_1() {
+        assertEquals("F", GradeCalculator.getGrade(1));
+    }
+
+    @Test
+    @DisplayName("3-pt | 51 → D")
+    void test3pt_51() {
+        assertEquals("D", GradeCalculator.getGrade(51));
+    }
+
+    @Test
+    @DisplayName("3-pt | 62 → C")
+    void test3pt_62() {
+        assertEquals("C", GradeCalculator.getGrade(62));
+    }
+
+    @Test
+    @DisplayName("3-pt | 77 → B")
+    void test3pt_77() {
+        assertEquals("B", GradeCalculator.getGrade(77));
+    }
+
+    @Test
+    @DisplayName("3-pt | 92 → A")
+    void test3pt_92() {
+        assertEquals("A", GradeCalculator.getGrade(92));
+    }
+
+    @Test
+    @DisplayName("3-pt | 99 → A")
+    void test3pt_99() {
+        assertEquals("A", GradeCalculator.getGrade(99));
     }
 }
